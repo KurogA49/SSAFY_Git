@@ -1,0 +1,21 @@
+
+[
+  {
+    "name": "kpg",
+    "age": "26",
+    "job": "no",
+    "hobby": ["excersise", "game", "theater"]
+  },
+  {
+    "name": "David",
+    "age": "10",
+    "job": "student",
+    "hobby": ["running", "cooking"]
+  },
+  {
+    "name": "sylvie",
+    "age": "60",
+    "job": "artist",
+    "hobby": ["painting"]
+  }
+]
