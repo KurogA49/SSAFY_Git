@@ -1,4 +1,5 @@
 # How to Use Git?
 
 ## User : Yang Kunho
-깃수업 처음이죠?
+
+Samsung SW Academy For Youth, 9th
