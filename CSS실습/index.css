@@ -1,0 +1,35 @@
+* {
+  color: black;
+  list-style-type: none;
+  font-family: "IBM Plex Sans KR", sans-serif;
+}
+#one {
+  color: blue;
+}
+#two {
+  color: violet;
+}
+a {
+  color: blue;
+}
+.menu {
+  color: darkcyan;
+}
+.font-test {
+  color: darkcyan;
+  font-size: 80px;
+  font-weight: bolder;
+  text-align: center;
+}
+.box {
+  height: 150px;
+  width: 150px;
+  border: 1px solid red;
+  background-color: aqua;
+  border-radius: 40% 60% 40% 50%;
+}
+.upgrade {
+  border: 4px solid black;
+  background-color: gray;
+  color: white;
+}
