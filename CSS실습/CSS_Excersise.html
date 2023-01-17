@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .profilebox {
+        border: 2px solid black;
+        width: 200px;
+        height: 200px;
+        border-radius: 50% 50% 50% 50%;
+        background-image: url("../image/samoyed-g2f8de57c2_1920.jpg");
+        background-size: cover;
+      }
+      .window-wrap {
+        width: 800px;
+        height: 500px;
+        display: flex;
+        background-color: orange;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .windowimage {
+        flex: 1;
+        width: 40%;
+        height: 35%;
+        border-radius: 20% 20% 20% 20%;
+        margin: 5%;
+      }
+
+      .playwindow {
+        position: relative;
+        width: 600px;
+        height: 350px;
+        border-radius: 10% 10% 10% 10%;
+        background-image: url("../image/samoyed-g2f8de57c2_1920.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      .playbutton {
+        position: absolute;
+        transform: translateY(-50%);
+        transform: translateX(-50%);
+        top: 45%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        background-image: url("../image/play-button.png");
+        background-size: cover;
+      }
+      .playtext {
+        width: 160px;
+        height: 100px;
+        position: absolute;
+        top: 35%;
+        right: 10%;
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="playwindow">
+      <div class="playbutton"></div>
+      <div class="playtext"><h1>사모예드 얼굴맞추기</h1></div>
+    </div>
+  </body>
+</html>

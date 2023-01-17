@@ -104,7 +104,7 @@ button {
   flex-direction: column;
 }
 
-.flexheadfoot, .flexnav, .flexupper1 {
+.flexheader, .flexfooter, .flexnav, .flexcontentbox {
   border: 2px solid gray;
   flex: 1;
 }
@@ -124,20 +124,7 @@ button {
   flex-direction: column;
 }
 
-.flexupper {
-  border: 1px solid gray;
-  flex: 3;
-
+.flextorow {
   display: flex;
   flex-direction: row;
-}
-
-.flexmiddle {
-  border: 1px solid gray;
-  flex: 1.5;
-}
-
-.flexdowner {
-  border: 1px solid gray;
-  flex: 2;
 }

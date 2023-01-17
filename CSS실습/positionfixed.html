@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        height: 1200px;
+      }
+      .test1 {
+        position: fixed;
+        /* 
+        fixed
+        3차원 요소로 동작, width를 따로 지정하지 않으면 inline으로 줄어들기 때문에 width를 명시해야 한다.
+      */
+        /* 
+        top, left, right, bottom을 붙일 수 있다.
+      */
+        width: 100%;
+        bottom: 10px;
+        left: 10px;
+      }
+      .header-wrapper {
+        width: 100%;
+        border-bottom: 1px solid black;
+        display: flex;
+        position: fixed;
+        top : 40px;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .menubar {
+        flex: 1;
+        display: flex;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+      .logobar {
+        flex: 1;
+        text-align: center;
+      }
+      .menuclass {
+        border: 1px solid black;
+        flex: 1;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="header-wrapper">
+        <div class="menubar">
+          <div class="menuclass">메뉴1</div>
+          <div class="menuclass">메뉴2</div>
+          <div class="menuclass">메뉴3</div>
+        </div>
+        <div class="logobar"><h1>logo</h1></div>
+        <div class="menubar">
+          <div class="menuclass">회원가입</div>
+          <div class="menuclass">로그인</div>
+        </div>
+        <div class="test1">test1</div>
+      </div>
+    </div>
+  </body>
+</html>
