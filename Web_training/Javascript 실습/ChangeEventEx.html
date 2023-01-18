@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Select!</h1>
+    <label>희망 직장 :
+      <select name="" id="">Choose
+        <option value="Amazon">Amazon</option>
+        <option value="Google">Google</option>
+        <option value="Microsoft">Microsoft</option>
+        <option value="SpaceX">SpaceX</option>
+      </select>
+    </label>
+    <div class="result-wrapper"></div>
+    <script>
+      const input = document.querySelector("input");
+      const resultWrapper = document.querySelector(".result-wrapper");
+      const select = document.querySelector("select");
+      
+      select.addEventListener("change", (e) => {
+        resultWrapper.textContent = e.target.value;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .defaultborder {
+        border: 1px solid black;
+        width: 300px;
+        height: 600px;
+      }
+      .flexbatch {
+        margin: 10px;
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="defaultborder">
+      <input type="text" class="id-text flexbatch" />
+      <input type="password" class="pwd-text flexbatch" />
+      <div>
+        <button class="sign-button">회원가입하기</button>
+      </div>
+    </div>
+    <script>
+      const idTxt = document.querySelector(".id-text");
+      const pwdTxt = document.querySelector(".pwd-text");
+      const signBtn = document.querySelector(".sign-button");
+      signBtn.addEventListener("click", () => {
+        if (idTxt.value !== "" && pwdTxt.value !== "") {
+          alert("회원 등록을 완료하였습니다.");
+        } else {
+          alert("아이디 혹은 비밀번호를 입력하지 않았습니다.");
+        }
+      });
+    </script>
+  </body>
+</html>

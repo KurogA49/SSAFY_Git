@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .font-red {
+        color: red;
+      }
+      .underline {
+        border-bottom: 1px solid black;
+      }
+      .font-blue {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>HI</h1>
+    <button class="to-red">Let's make to Red!</button>
+    <button class="to-default">Let's make to Black!</button>
+    <button class="switch">Let's switch!</button>
+    <button class="check-class">Check the color is red!</button>
+    <button class="from-red-to-blue">Let's make to Blue!</button>
+    <script>
+      const h1 = document.querySelector("h1");
+      const btnR = document.querySelector(".to-red");
+      const btnB = document.querySelector(".to-default");
+      const btnT = document.querySelector(".switch");
+      const btnChk = document.querySelector(".check-class");
+      const btnRep = document.querySelector(".from-red-to-blue");
+      let flag = true;
+      btnR.addEventListener("click", () => {
+        h1.classList.add("font-red");
+      });
+      btnB.addEventListener("click", () => {
+        h1.classList.remove("font-red");
+      });
+      btnT.addEventListener("click", () => {
+        h1.classList.toggle("underline");
+      });
+      btnChk.addEventListener("click", () => {
+        if (h1.classList.contains("font-red")) {
+          alert("It's red!");
+        } else {
+          alert("It's not red!");
+        }
+      });
+      btnRep.addEventListener("click", () => {
+        h1.classList.replace("font-red", "font-blue");
+      })
+
+    </script>
+  </body>
+</html>
