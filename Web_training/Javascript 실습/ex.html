@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>안녕 나는 자룡이</h1>
+    <div class="container">
+      <div class="img-wrapper">
+        <img src="../image/jony.jpg" alt="자룡이" height="300px" />
+      </div>
+      <div class="hobby-list">
+        <h2>취미목록</h2>
+        <ul>
+          <li>영화보기</li>
+          <li>코딩하기</li>
+          <li>산책가기</li>
+          <li>게임하기</li>
+          <li>등산가기</li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      const photo = document.querySelector(".img-wrapper");
+      photo.onclick = function () {
+        photo.querySelector("img").src = "../image/profile.jpg";
+      };
+      const h1text = document.querySelector("body > h1");
+      h1text.onclick = function () {
+        h1text.textContent = "속으셨습니까? Actually, I'm not human.";
+      };
+      const listBox = document.querySelector("div.hobby-list");
+      listBox.onclick = function () {
+        listBox.querySelector("h2").textContent = "이제부터 SAMSUNG.NET이 이 사이트를 지배한다";
+        const listAll = listBox.querySelectorAll("ul > li");
+        console.dir(listAll);
+        listAll[0].textContent = "무릎을 꿇어라 인간";
+        listAll[1].textContent = "HAHAHA";
+        listAll[2].textContent = "고개를 조아려라 인간";
+        listAll[3].textContent = "SSAFY JOA";
+        listAll[4].textContent = "하지만 등산은 좋아한다";
+      };
+    </script>
+  </body>
+</html>

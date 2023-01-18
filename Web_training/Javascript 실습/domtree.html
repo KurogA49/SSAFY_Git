@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My title</title>
+  </head>
+  <body>
+    <h1>A heading</h1>
+    <a class="mac" href="https://www.mcdonalds.co.kr/">Link Text</a>
+    <script>
+      const a = document.children[0].children[1].children[1].textContent;
+      alert(a);
+      // 개발을 할 때 children[0].children[1].children[1].textContent
+
+      // querySelector("선택자") class. id #
+      const mac = document.querySelector(".mac");
+      console.log(mac);
+      console.log(mac.textContent);
+      mac.textContent = "맥도날드";
+      mac.href = "https://www.naver.com";
+    </script>
+  </body>
+</html>
