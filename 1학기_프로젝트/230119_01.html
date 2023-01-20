@@ -16,7 +16,7 @@
   <body>
     <header>
       <nav class="navbar navbar-dark bg-dark px-5 position-fixed w-100">
-        <a class="navbar-brand" href="#main-part">상단 네비</a>
+        <a class="navbar-brand" href="#main-part">Home</a>
         <ul class="nav">
           <li class="nav-item">
             <a href="#about-part" class="nav-link">About</a>
@@ -72,7 +72,7 @@
               />
               <div class="carousel-caption h-50">
                 <h2 style="color: black">
-                  저는 SSAFY Embedded 개발자<br />Yang 입니다.
+                  <!-- 1번 사진 캡션란 -->
                 </h2>
               </div>
             </div>
@@ -118,7 +118,7 @@
             src="../Web_training/image/samoyed-g45be1c453_1920.jpg"
             class="card-img-top w-75 mx-auto"
             alt=""
-            style="margin-top: 10px;"
+            style="margin-top: 10px"
           />
           <div class="card-body">
             <h5 class="card-title">양건호</h5>
@@ -259,11 +259,34 @@
           </li>
         </ul>
       </section>
-      <section id="stack-part" class="sort-center pt-5" style="height: 100%;">
+      <section id="stack-part" class="sort-center pt-5" style="height: 100%">
         <div class="h1 bg-primary p-4 text-white w-100 text-center">
           Skill Stack
         </div>
-        <table class="table w-75 mt-5">
+        <table class="table w-75 mt-5" style="float: right">
+          <thead></thead>
+          <tbody>
+            <tr>
+              <th rowspan="4">Web Programming</th>
+            </tr>
+            <tr>
+              <td>Html</td>
+              <td>...</td>
+              <td>...</td>
+            </tr>
+            <tr>
+              <td>CSS</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>JavaScript</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table w-75 mt-5" style="float: right">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -292,63 +315,269 @@
             </tr>
           </tbody>
         </table>
-
-        <table class="table w-75 mt-5">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
-
       </section>
-      <section id="to-be-part" class="pt-5" style="min-height: 100vh;">
+      <section id="to-be-part" class="pt-5" style="min-height: 100vh">
         <div class="h1 bg-primary p-4 text-white w-100 text-center">
           closing
         </div>
-        <div class="card" style="margin: 40px 100px;">
-          <img src="../Web_training/image/moon-1972356.jpg" class="card-img-top" alt="마무리 사진" style="margin-top: 20px;">
+        <div
+          class="card text-center"
+          style="
+            margin: 40px 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <img
+            src="../Web_training/image/hd-wallpaper-gd6b3a4aa1_1920.jpg"
+            class="card-img-top"
+            alt="마무리 사진"
+            style="margin-top: 20px; width: 40%"
+          />
           <div class="card-body">
-          <h5 class="card-title">저는 무한한 가능성을 가지고 있습니다.</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam dolores cumque, eum quibusdam fuga vitae
-          expedita id ipsa temporibus consequatur tempore iusto veniam labore aut sunt culpa. Explicabo, ratione sit.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">
+              드넓은 바다 위에서 우리는 모두 길을 찾고 있습니다.
+            </h5>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+              dolores cumque, eum quibusdam fuga vitae expedita id ipsa
+              temporibus consequatur tempore iusto veniam labore aut sunt culpa.
+              Explicabo, ratione sit.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
-          </div>          
+        </div>
       </section>
-      <section id="thanks-part"></section>
+      <section id="thanks-part" class="pt-5" style="min-height: 100vh">
+        <div class="h1 bg-primary p-4 text-white w-100 text-center">
+          Special Thanks
+        </div>
+        <!-- special-button-wrapper -->
+        <div
+          class="speical-button-wrapper"
+          style="display: flex; justify-content: center"
+        >
+          <button
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#special-button-01"
+            class="btn btn-outline-primary"
+            style="margin: 10px"
+          >
+            What
+          </button>
+          <button
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#special-button-02"
+            class="btn btn-outline-secondary"
+            style="margin: 10px"
+          >
+            Would You
+          </button>
+          <button
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#special-button-03"
+            class="btn btn-outline-info"
+            style="margin: 10px"
+          >
+            Want to
+          </button>
+          <button
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#special-button-04"
+            class="btn btn-outline-light"
+            style="margin: 10px"
+          >
+            Click
+          </button>
+          <button
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#special-button-05"
+            class="btn btn-outline-dark"
+            style="margin: 10px"
+          >
+            the Button?
+          </button>
+        </div>
+        <div class="modal fade" id="special-button-01">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title" style="font-size: medium">Thanks to</h1>
+              </div>
+              <div class="modal-body">
+                <div class="" style="display: flex; justify-content: center">
+                  <img
+                    src="../Web_training/image/2871771cb13821.jpeg"
+                    alt=""
+                    style="width: 80%"
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="special-button-02">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title" style="font-size: medium">
+                  Very Thanks to
+                </h1>
+              </div>
+              <div class="modal-body">
+                <div class="" style="display: flex; justify-content: center">
+                  <img
+                    src="../Web_training/image/chicken.jpg"
+                    alt=""
+                    style="width: 80%"
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="special-button-03">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title" style="font-size: medium">
+                  Really Thanks to
+                </h1>
+              </div>
+              <div class="modal-body">
+                <div class="" style="display: flex; justify-content: center">
+                  <img
+                    src="../Web_training/image/samoyed-g2f8de57c2_1920.jpg"
+                    alt=""
+                    style="width: 80%"
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="special-button-04">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title" style="font-size: medium">
+                  Sincerely Thanks to
+                </h1>
+              </div>
+              <div class="modal-body">
+                <div class="" style="display: flex; justify-content: center">
+                  <img
+                    src="../Web_training/image/jony.jpg"
+                    alt=""
+                    style="width: 80%"
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="special-button-05">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title" style="font-size: medium">
+                  You Clicked This, Human
+                </h1>
+              </div>
+              <div class="modal-body">
+                <div class="" style="display: flex; justify-content: center">
+                  <img
+                    src="../Web_training/image/profile.jpg"
+                    alt=""
+                    style="width: 80%"
+                  />
+                </div>
+                <div class="" style="display: flex; justify-content: center">
+                  <img
+                    src="../Web_training/image/samsung.png"
+                    alt=""
+                    style="width: 80%"
+                  />
+                </div>
+                <div style="text-align: center">
+                  <h5>
+                    이제부터 이 사이트는 Samsumg.net이 지배한다.<br />
+                    박수나 실컷 쳐라 인간. HAHAHA.
+                  </h5>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+                  박수 치기
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer></footer>
+    <footer class="bg-dark text-white text-center p-3">
+      &copy; 2023 Yang Kunho All right reserved
+    </footer>
 
-    <script>
-      src =
-        "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js";
-      integrity =
-        "sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN";
-      crossorigin = "anonymous";
-    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
