@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .defaultborder {
+      border: 1px solid gray;
+    }
+    .maincon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 600px;
+      height: 600px;
+    }
+    .header {
+      width: 100%;
+      background-color: darkgrey;
+      text-align: center;
+    }
+    .menuheader {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 10px;
+    }
+    .maincontent {
+      flex: 3;
+      margin: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      text-align: center;
+      font-size: 18px;
+    }
+    .menuimg {
+      width: 30px;
+      height: 30px;
+      background-color: blue;
+      border-radius: 50% 50% 50% 50%;
+      background-image: url("./burger-151421_1280.png");
+      background-size: cover;
+      margin: 10px;
+    }
+    .mainmenuimg {
+      width: 200px;
+      margin: 10px;
+    }
+    .menuatt {
+      background-color: cadetblue;
+      color: white;
+      margin: 3px;
+      height: 30%;
+      font-size: 25px;
+    }
+  </style>
+</head>
+<body>
+  <div class="maincon defaultborder">
+    <div class="header defaultborder" style="height: 40px; border-top: 0;">
+      <h2 style="margin: 5px;">KFC World</h2>
+    </div>
+    <div class="menuheader" style="display: flex;">
+      <div class="menuimg"></div>
+      <h2>메뉴판</h2>
+    </div>
+    <div class="maincontent">
+      <img src="./hamburger-1238246_1920.jpg" alt="" class="mainmenuimg">
+      <span class="defaultborder" style="width: 300px; height: 150px;">
+        <div class="menuatt defaultborder">
+          Fire Bugger
+        </div>
+        <div style="margin-top: 10%;">
+          맵지 않습니다. <br>
+          다만 뜨거운 불타는 버거
+        </div>
+      </span>
+    </div>
+    <div class="maincontent">
+      <span class="defaultborder" style="width: 300px; height: 150px;">
+        <div class="menuatt defaultborder">
+          Degda Bugger
+        </div>
+        <div style="margin-top: 10%;">
+          하나의 가격으로 <br>
+          3개의 버거를 먹는 재미
+        </div>
+      </span>
+      <img src="./burger-4953465_1920.jpg" alt="" class="mainmenuimg">
+    </div>
+  </div>
+</body>
+</html>

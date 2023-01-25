@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .maincontainer {
+        display: flex;
+        width: 900px;
+        height: 500px;
+        padding-left: 60px;
+        padding-top: 60px;
+        flex-wrap: nowrap;
+      }
+      .photowrapper {
+        position: relative;
+      }
+      .photoborder {
+        border: 15px solid black;
+        box-shadow: 3px 3px 3px 3px gray;
+
+        margin: 2px;
+        height: 300px;
+      }
+      .newmark {
+        width: 120px;
+        height: 120px;
+        border: 2px solid black;
+        position: absolute;
+        background-color: yellow;
+        border-radius: 50% 50% 50% 50%;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: -50px;
+        top: -50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="maincontainer">
+      <div class="photowrapper">
+        <div class="newmark"><h1>NEW</h1></div>
+        <img src="./hedgehog-1215140_1920.jpg" alt="" class="photoborder" />
+        <img src="./cat-551554_1920.jpg" alt="" class="photoborder" />
+      </div>
+    </div>
+  </body>
+</html>
