@@ -1,0 +1,14 @@
+.mainbox {
+  width: 800px;
+  height: 800px;
+  border: 2px solid black;
+  display: flex;
+  flex-wrap: wrap;
+}
+.chessbox {
+  width: 100px;
+  height: 100px;
+}
+.colorToBlack {
+  background-color: black;
+}
