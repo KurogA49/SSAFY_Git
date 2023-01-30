@@ -25,10 +25,10 @@ aside {
 
 /* 1. article 태그는 white로 나머지 시멘틱 태그는 lightgrey로 배경색을 설정합니다. */
 
-article {
+.article {
   background-color: white;
 }
-header, nav, section, aside, footer {
+.header, .nav, .section, .aside, .footer {
   background-color: lightgray;
 }
 
@@ -36,26 +36,26 @@ header, nav, section, aside, footer {
 
 /* 3. header, nav, footer 태그의 padding을 4px로 설정합니다. */
 
-header, nav, footer {
+.header, .nav, .footer {
   margin: 4px;
   padding: 4px;
 }
 
 /* 4. h1 태그를 수평 중앙에 정렬합니다. */
 
-h1 {
+.h1 {
   text-align: center;
 }
 
 /* 5. section 태그는 width 490px height 300px, 
    aside 태그는 width 280px height 300px로 설정합니다.*/
 
-section {
+.section {
   width: 490px;
   height: 300px;
 }
 
-aside {
+.aside {
   width: 280px;
   height: 300px;
 }
@@ -64,7 +64,7 @@ aside {
 
 /* 7. 모든 semantic 태그의 border 모서리 반경을 4px로 설정합니다. */
 
-header, nav, section, aside, footer, article {
+.header, .nav, .section, .aside, .footer, .article {
   border: 1px solid black;
   border-radius: 4px 4px 4px 4px;
 }
