@@ -1,134 +1,121 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
+#include<iostream>
+#include <cstring>
 using namespace std;
 
-int** arr;
-int* used;
-vector<int> v;
+int arr[20][20];
+int Copy[20][20];
+int D, W, K, injectioncnt;
+int ans = 21e8;
 
-int check(int** arr, int D, int W, int K)
+int check()
 {
-	vector<int> tmp;
+	// 세로 방향으로 K개 이상 연결된 A 또는 B가 모든 열에 있는가?
 	for (int i = 0; i < W; i++)
 	{
-		bool flag = false;
+		// 가장 위에 있는 성분
+		int base = Copy[0][i];
+		int cnt = 0;
+		int flag = 0;
 		for (int j = 0; j < D; j++)
 		{
-			// 검사 배열에 들어올 특성이 전과 다를 때
-			if (tmp.size() > 0 && tmp.back() != arr[j][i])
+			if (base == Copy[j][i])
 			{
-				// 적층된 성분의 두께가 K보다 크다면 해당 검사는 통과
-				if (tmp.size() >= K)
+					cnt++;
+				if (cnt >= K)
 				{
-					tmp.clear();
-					flag = true;
+					flag = 1;
 					break;
 				}
-				else
-				{
-					tmp.clear();
-				}
 			}
-			tmp.push_back(arr[j][i]);
+			else
+			{
+				base = Copy[j][i];
+				cnt = 1;
+			}
 		}
-		if (tmp.size() < K)
+		if (flag == 0)
 			return 0;
-		tmp.clear();
 	}
 	return 1;
 }
 
-int rebuild(int D, int W, int K, int cnt)
+void rebuild(int lev)
 {
-	if (cnt == D)
+	// 기저조건 -> D번 행까지 도달했을 때
+	if (lev == D)
 	{
-		return cnt;
-	}
-	for (int i = 0; i < D; i++)
-	{
-		// 보수작업 전 복구할 임시배열
-		int* tmp = new int[W];
-		for (int j = 0; j < W; j++)
-		{
-			tmp[j] = arr[i][j];
+		// 성능테스트
+		if (check()) {
+			if (injectioncnt < ans)
+				ans = injectioncnt;
 		}
-
-		// 보수 작업 - 모두 1로
-		for (int j = 0; j < W; j++)
-		{
-			arr[i][j] = '1';
-		}
-		if (check(arr, D, W, K) == 1)
-		{
-			v.push_back(cnt - 1);
-			return cnt;
-		}
-			
-		// 재귀
-		rebuild(D, W, K, cnt + 1);
-		// 보수 작업 - 모두 0으로
-		for (int j = 0; j < W; j++)
-		{
-			arr[i][j] = '0';
-		}
-		if (check(arr, D, W, K) == 1)
-		{
-			return cnt;
-			v.push_back(cnt - 1);
-		}
-			
-		rebuild(D, W, K, cnt + 1);
-		// 복구
-		for (int j = 0; j < W; j++)
-		{
-			arr[i][j] = tmp[j];
-		}
+		return;
 	}
 
-	return 0;
+	// bactracking -> 현재 투입한 약품 횟수가 ans보다 많으면 
+	// 이 작업은 쓸모없으므로 돌아가기
+	if (ans < injectioncnt)
+		return;
+
+	// 일단 아무것도 안 하기
+	// 재귀
+	rebuild(lev + 1);
+
+	injectioncnt++;
+	// 보수 작업 - 모두 1로
+	for (int j = 0; j < W; j++)
+		Copy[lev][j] = 1;
+	// 재귀
+	rebuild(lev + 1);
+	// 복구
+	for (int i = 0; i < W; i++)
+		Copy[lev][i] = arr[lev][i];
+	injectioncnt--;
+
+
+	injectioncnt++;
+	// 보수 작업 - 모두 0으로
+	for (int j = 0; j < W; j++)
+		Copy[lev][j] = 0;
+	// 재귀
+	rebuild(lev + 1);
+	// 복구
+	for (int i = 0; i < W; i++)
+		Copy[lev][i] = arr[lev][i];
+	injectioncnt--;
 }
 
-int main()
+int main(int argc, char** argv)
 {
+	int test_case;
 	int T;
-	cin >> T;
-	for (int i = 0; i < T; i++)
+	//freopen("input.txt", "r", stdin);
+	cin>>T;
+	for(test_case = 1; test_case <= T; ++test_case)
 	{
+        ans = 21e8;
+		injectioncnt = 0;
+		memset(arr, 0, sizeof(arr));
+		memset(Copy, 0, sizeof(Copy));
+
 		// 사이즈 및 기준 입력
-		int D, W, K, cnt = 0;
 		cin >> D >> W >> K;
 		// 필름 보호막 생성 및 값 입력
-		arr = new int* [D];
 		for (int i = 0; i < D; i++)
 		{
-			arr[i] = new int[W] {};
 			for (int j = 0; j < W; j++)
 			{
 				cin >> arr[i][j];
+				Copy[i][j] = arr[i][j];
 			}
 		}
-
-		// 초기검사
-		if (check(arr, D, W, K) == 0)
-		{
-			// 초기검사가 불량이라면 보수작업 진행
-			cnt = rebuild(D, W, K, cnt);
-		}
+		// 처음부터 안 넣어도 통과하는 경우
+		if (check())
+			ans = 0;
 		else
-			v.push_back(0);
-		sort(v.begin(), v.end());
-		cout << '#' << T << " " << v.front();
-
-		// 작업 종료
-		v.clear();
-		for (int i = 0; i < D; i++)
-		{
-			delete[] arr[i];
-		}
-		delete[] arr;
+			rebuild(0); // 보수작업 실행
+		
+		cout << "#" << test_case << " " << ans << endl;
 	}
-
 	return 0;
 }
