@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .headfont {
+        font-weight: bold;
+        width: 500px;
+        text-align: center;
+        margin: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid gray;
+      }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="border rounded" style="background-color: red; width: 500px; margin-left: 20px; color: white; padding: 20px;">Invalid Login or password</div>
+    <h1 class="headfont">SSAFY 전용 Gitlab 시스템</h1>
+    <div
+      class="signbox border rounded"
+      style="width: 500px; height: 400px; margin: 20px"
+    >
+      <div class="signin" style="border-bottom: 2px solid blue">
+        <h5 style="font-weight: bold; text-align: center; margin: 20px">
+          Sign in
+        </h5>
+      </div>
+      <div class="input" style="margin: 20px">
+        <div class="mb-3">
+          <label
+            for="exampleFormControlInput1"
+            class="form-label"
+            style="font-weight: bold"
+          >
+            Username or Email
+          </label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleFormControlInput1"
+          />
+        </div>
+        <div class="mb-3">
+          <label
+            for="exampleFormControlTextarea1"
+            class="form-label"
+            style="font-weight: bold"
+          >
+            Password
+          </label>
+          <input type="password" class="form-control" />
+        </div>
+      </div>
+      <div
+        class="addpart"
+        style="display: flex; justify-content: space-between; position: relative;"
+      >
+        <div class="checkbox" style="flex: 1">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            style="margin-left: 20px"
+          />
+          <label class="form-check-label" style="margin-left: 5px">
+            Remember me
+          </label>
+        </div>
+        <a href="#" style="flex: 1; position: absolute; right: 20px;">Forgot your password?</a>
+      </div>
+      <div class="signbtn" style="margin: 20px">
+        <button type="button" class="btn btn-success" style="width: 100%">
+          sign in
+        </button>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"
+  ></script>
+</html>

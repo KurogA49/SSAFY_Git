@@ -104,7 +104,10 @@ button {
   flex-direction: column;
 }
 
-.flexheader, .flexfooter, .flexnav, .flexcontentbox {
+.flexheader,
+.flexfooter,
+.flexnav,
+.flexcontentbox {
   border: 2px solid gray;
   flex: 1;
 }

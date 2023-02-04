@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      header {
+        width: 100%;
+        height: 1000px;
+        background-image: url("./images/header.jpg");
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      section {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 30px;
+      }
+      .cinema {
+        flex: 2;
+        font-size: 5em;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+      }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav
+      class="navbar navbar-expand-lg bg-dark"
+      data-bs-theme="dark"
+      style="position: fixed; width: 100%"
+    >
+      <div class="container-fluid" style="position: relative; color: white">
+        <a href="#"><img src="./images/logo.png" alt="" height="60" /></a>
+        <div class="menulist" style="font: 1.5em">
+          <ul style="list-style: none">
+            <li style="float: left; margin-left: 2em">
+              <a href="#" class="nav-link">Community</a>
+            </li>
+            <li style="float: left; margin-left: 2em">
+              <a href="#" class="nav-link">Login</a>
+            </li>
+            <li style="float: left; margin-left: 2em">
+              <a href="#" class="nav-link">Home</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- main image & artiche -->
+    <header>
+      <h1 class="cinema">
+        Cinema <br />
+        Community
+        <div>
+          <button type="button" class="btn btn-primary">Let's Go</button>
+        </div>
+      </h1>
+    </header>
+    <!-- skills -->
+    <section>
+      <h1 style="text-align: center; margin: 50px">Used Skills</h1>
+      <ul
+        style="
+          list-style: none;
+          width: 100%;
+          display: flex;
+          justify-content: space-evenly;
+          text-align: center;
+        "
+      >
+        <li style="flex: 1; width: 400px">
+          <img src="./images/web.png" alt="" style="width: 400px" />
+          <div>Web</div>
+        </li>
+        <li style="flex: 1; width: 400px">
+          <img src="./images/html5.png" alt="" style="width: 400px" />
+          <div>HTML5</div>
+        </li>
+        <li style="flex: 1; width: 400px">
+          <img src="./images/css3.png" alt="" style="width: 400px" />
+          <div>CSS3</div>
+        </li>
+      </ul>
+    </section>
+    <!-- tail part -->
+    <footer
+      class="border"
+      style="
+        width: 100%;
+        height: 100px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: blue;
+      "
+    >
+      <h6 style="color: white">
+        HTML & CSS Project Created by Yang-kunho 2023
+      </h6>
+    </footer>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"
+  ></script>
+</html>
