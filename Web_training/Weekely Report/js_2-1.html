@@ -14,7 +14,7 @@
 
     // 1
     const name = 'Tom'
-    console.log('Hi, my name is' + name)
+    console.log(`Hi, my name is ${name}`)
 
     // 2
     const add = (x, y) => {
@@ -24,16 +24,16 @@
     // 3
     const tom = {
       name: 'Tom',
-      introduce: function () {
-        console.log('Hi, my name is' + this.name)
+      introduce() {
+        console.log(`Hi, my name is ${this.name}`)
       }
     }
 
     // 4
     const url = 'https://test.com'
     const data = { message: 'Hello World!' }
+    const request = { url, data }
 
-    const request = { url: url, data: data }
   </script>
 </body>
 </html>
