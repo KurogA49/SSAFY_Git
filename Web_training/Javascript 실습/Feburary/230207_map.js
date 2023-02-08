@@ -170,40 +170,56 @@
 //   color: "red",
 // };
 
-const chicken = {
-  type: "source",
-  drumsticks: 2,
-  wing: 2,
-};
+// const chicken = {
+//   type: "source",
+//   drumsticks: 2,
+//   wing: 2,
+// };
 
-const {type, ...another} = chicken;
-console.log(another);
+// const {type, ...another} = chicken;
+// console.log(another);
 
-const bucketLists = [
-  { id: 3, text: "여행가기", done: false, },
-  { id: 2, text: "치킨 먹기", done: true, },
-  { id: 1, text: "코딩 하기", done: false, },
+// const bucketLists = [
+//   { id: 3, text: "여행가기", done: false, },
+//   { id: 2, text: "치킨 먹기", done: true, },
+//   { id: 1, text: "코딩 하기", done: false, },
+// ];
+
+// const getValues = (key) =>
+//   bucketLists.map((bucketList) => bucketList[key]);
+
+// console.log(getValues('id'));
+// console.log(getValues('text'));
+// console.log(getValues('done'));
+
+// const filtering = (key, value) =>
+//   bucketLists.filter(item => item[key] !== value);
+
+// const toggle = (id) => {
+//   const newBucketLists = structuredClone(bucketLists);
+//   const ret = newBucketLists.filter((item) => item.id === id);
+//   if(ret[0].done) {
+//     ret[0].done = false;
+//   } else {
+//     ret[0].done = true;
+//   }
+//   return newBucketLists;
+// };
+
+// console.log(toggle(1));
+
+const studentInfo =  [
+  {
+    name : "tony",
+    age : 30,
+  },
+  {
+    name : "paul",
+    age : 24,
+  },
+  {
+    name : "pipi",
+    age : 18,
+  },
 ];
 
-const getValues = (key) =>
-  bucketLists.map((bucketList) => bucketList[key]);
-
-console.log(getValues('id'));
-console.log(getValues('text'));
-console.log(getValues('done'));
-
-const filtering = (key, value) => 
-  bucketLists.filter(item => item[key] !== value);
-
-const toggle = (id) => {
-  const newBucketLists = structuredClone(bucketLists);
-  const ret = newBucketLists.filter((item) => item.id === id);
-  if(ret[0].done) {
-    ret[0].done = false;
-  } else {
-    ret[0].done = true;
-  }
-  return newBucketLists;
-};
-
-console.log(toggle(1));
