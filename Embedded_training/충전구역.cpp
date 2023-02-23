@@ -1,6 +1,8 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 #include <queue>
 using namespace std;
 
@@ -9,6 +11,16 @@ struct node {
 	int x;
 	int range;
 	int power;
+	int num;
+
+	bool operator < (node right) const
+	{
+		return power > right.power;
+	}
+	bool operator == (node right) const
+	{
+		return num == right.num;
+	}
 };
 struct p {
 	int y;
@@ -46,59 +58,96 @@ int getTotalPower()
 	int power = 0;
 	for (int currentTime = 0; currentTime <= M; currentTime++)
 	{
-		// 현재 두 사람이 충전 구역 내에 있는가?
 		int maxA = 0;
 		int maxB = 0;
-		int tmpA = 0;
-		int tmpB = 0;
+		vector<node> chargeA, chargeB, chargeCommon;
 		for (int i = 0; i < BC.size(); i++)
 		{
 			int fromA = getDistance(userA.y, userA.x, BC[i].y, BC[i].x);
 			int fromB = getDistance(userB.y, userB.x, BC[i].y, BC[i].x);
-			
-			// 혹시 같은 충전 구역 내에 두 사람이 모두 있다면
-			// 생각할 수 있는 경우
-			// A의 현재 위치가 겹쳐져 있으면 A가 버리고 B에게 몰아주는 경우
-			// B의 현재 위치가 겹쳐져 있으면 B가 버리고 A에게 몰아주는 경우
+
+			// 현재 두 사람이 충전 구역 내에 있는가?
 			if (fromA <= BC[i].range && fromB <= BC[i].range)
 			{
-				if (tmpA < BC[i].power / 2)
-					tmpA = BC[i].power / 2;
-				if (tmpB < BC[i].power / 2)
-					tmpB = BC[i].power / 2;
+				chargeCommon.push_back(BC[i]);
 			}
-			// 서로 떨어져 있다면
 			else
 			{
-				if (fromA <= BC[i].range && maxA < BC[i].power)
-				{
-					maxA = BC[i].power;
-				}
-					
-				if (fromB <= BC[i].range && maxB < BC[i].power)
-				{
-					maxB = BC[i].power;
-				}
-					
+				if (fromA <= BC[i].range)
+					chargeA.push_back(BC[i]);
+				if (fromB <= BC[i].range)
+					chargeB.push_back(BC[i]);
 			}
 		}
-		if (maxA > tmpA)
+		sort(chargeA.begin(), chargeA.end());
+		sort(chargeB.begin(), chargeB.end());
+		sort(chargeCommon.begin(), chargeCommon.end());
+		if (chargeCommon.size())
 		{
-			if (maxB < tmpB * 2)
-				maxB = tmpB * 2;
+			// 경우 1. A, B가 같은 충전구역에 겹치고 A는 또 다른 충전구역에 걸쳐 있다면
+			if (chargeA.size() > 0 && chargeB.size() == 0)
+			{
+				maxB = chargeCommon[0].power;
+				if (chargeCommon.size() >= 2 && chargeCommon[1].power > chargeA[0].power)
+					maxA = chargeCommon[1].power;
+				else
+					maxA = chargeA[0].power;
+
+			}
+			// 경우 2. A, B가 같은 충전구역에 겹치고 B는 또 다른 충전구역에 걸쳐 있다면
+			else if (chargeB.size() > 0 && chargeA.size() == 0)
+			{
+				maxA = chargeCommon[0].power;
+				if (chargeCommon.size() >= 2 && chargeCommon[1].power > chargeB[0].power)
+					maxB = chargeCommon[1].power;
+				else
+					maxB = chargeB[0].power;
+
+			}
+			// 경우 3. A, B가 같은 충전구역에 겹치고 A, B가 서로 다른 충전구역에 걸쳐 있다면
+			else if (chargeA.size() > 0 && chargeB.size() > 0)
+			{
+
+				int AC = chargeA[0].power + chargeCommon[0].power;
+				int BC = chargeB[0].power + chargeCommon[0].power;
+				int AB = chargeA[0].power + chargeB[0].power;
+				if (AB > AC && AB > BC)
+				{
+					maxA = chargeA[0].power;
+					maxB = chargeB[0].power;
+				}
+				else if (AC > BC)
+				{
+					maxA = chargeA[0].power;
+					maxB = chargeCommon[0].power;
+				}
+				else
+				{
+					maxA = chargeCommon[0].power;
+					maxB = chargeB[0].power;
+				}
+			}
+			// 경우 4. A, B 모두 둘 이상 겹친 충전 구역 내에 있다면
+			else if (chargeCommon.size() >= 2)
+			{
+				maxA = chargeCommon[0].power;
+				maxB = chargeCommon[1].power;
+			}
+			// 경우 5. 이 구역 이외에 A, B 모두 겹치는 충전구역이 없다면
+			else
+			{
+				maxA = chargeCommon[0].power / 2;
+				maxB = chargeCommon[0].power / 2;
+			}
 		}
-		else if (maxB > tmpB)
+		else
 		{
-			if (maxA < tmpA * 2)
-				maxA = tmpA * 2;
+			if(chargeA.size())
+				maxA = chargeA[0].power;
+			if(chargeB.size())
+				maxB = chargeB[0].power;
 		}
-		else 
-		{
-			if (maxA < tmpA * 2)
-				maxA = tmpA * 2;
-			else if (maxB < tmpB * 2)
-				maxB = tmpB * 2;
-		}
+
 		power += maxA;
 		power += maxB;
 
@@ -116,6 +165,7 @@ int getTotalPower()
 
 int main(int argc, char** argv)
 {
+	// freopen("C:\\Users\\SSAFY\\Downloads\\sample_input (1).txt", "r", stdin);
 	int test_case;
 	int T;
 
@@ -138,6 +188,7 @@ int main(int argc, char** argv)
 		{
 			node t;
 			cin >> t.x >> t.y >> t.range >> t.power;
+			t.num = i + 1;
 			BC.push_back(t);
 		}
 		userA = { 1, 1 };
