@@ -118,13 +118,19 @@ int getTotalPower()
 				}
 				else if (AC > BC)
 				{
-					maxA = chargeA[0].power;
 					maxB = chargeCommon[0].power;
+					if (chargeCommon.size() >= 2 && chargeCommon[1].power > chargeA[0].power)
+						maxA = chargeCommon[1].power;
+					else
+						maxA = chargeA[0].power;
 				}
 				else
 				{
 					maxA = chargeCommon[0].power;
-					maxB = chargeB[0].power;
+					if (chargeCommon.size() >= 2 && chargeCommon[1].power > chargeB[0].power)
+						maxB = chargeCommon[1].power;
+					else
+						maxB = chargeB[0].power;
 				}
 			}
 			// 경우 4. A, B 모두 둘 이상 겹친 충전 구역 내에 있다면
