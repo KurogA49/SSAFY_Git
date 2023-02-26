@@ -17,7 +17,7 @@ int dx[4] = { 0, 1, 0, -1 };
 
 
 int W, H, N, Max = 0;
-vector<vector<int>> arr;
+int map[5][15][12];
 
 // W * H 판 위에 벽돌이 쌓여 있고
 // N번 구슬을 쏜다
@@ -27,123 +27,111 @@ vector<vector<int>> arr;
 // 벽돌이 부서진 뒤에 모든 벽돌은 밑으로 차근차근 내려간다
 // 그럼 최대한 부수고 난 뒤에 남은 벽돌의 수는?
 
-int countAll(vector<vector<int>> arr)
+// 다음 level로의 map을 사용하기 위해 이전 level의 map을 전사
+void mapcpy(int lev)
 {
-	int cnt = 0;
 	for (int i = 0; i < H; i++)
 	{
 		for (int j = 0; j < W; j++)
 		{
-			if (arr[i][j] > 0)
-				cnt++;
+			map[lev][i][j] = map[lev - 1][i][j];
+		}
+	}
+}
+
+// 블록을 터뜨리고 난 뒤에 빈 공간을 정리
+void ordering(int lev)
+{
+	queue<int> q;
+	for (int i = 0; i < W; i++)
+	{
+		for (int j = H - 1; j >= 0; j--)
+		{
+			if (map[lev][j][i])
+			{
+				q.push(map[lev][j][i]);
+				map[lev][j][i] = 0;
+			}
+		}
+		for (int j = H - 1; !q.empty(); q.pop(), j--)
+		{
+			map[lev][j][i] = q.front();
+		}
+	}
+}
+
+// 현재 위치에서 터뜨릴 블록
+int dfs(int y, int x, int lev)
+{
+	int gap = map[lev][y][x];
+	map[lev][y][x] = 0;
+	int cnt = 1;
+
+	// 현재 블록이 가진 값만큼의 모든 범위에
+	for (int i = 0; i < gap; i++)
+	{
+		// 상하좌우로
+		for (int j = 0; j < 4; j++)
+		{
+			int cy = y + dy[j] * i;
+			int cx = x + dx[j] * i;
+			if (cy < 0 || cx < 0 || cy >= H || cx >= W) continue;
+			if (map[lev][cy][cx] == 0) continue;
+			// 다른 블록이 닿는다면 터뜨리는 작업을 추가
+			cnt += dfs(cy, cx, lev);
 		}
 	}
 	return cnt;
 }
 
-vector<vector<int>> after(vector<vector<int>> arr)
+int run(int lev)
 {
-	for (int j = 0; j < W; j++)
-	{
-		int last = 0;
-		for (int i = H - 1; i >= 1; i--)
-		{
-			if (arr[i][j] == 0 && i == H - 1)
-				last = i;
-			else if (arr[i][j] == 0 && arr[i + 1][j] > 0)
-				last = i;
-			if (arr[i][j] > 0 && i < last)
-			{
-				int tmp = arr[i][j];
-				arr[i][j] = arr[last][j];
-				arr[last][j] = tmp;
-				last = i - 1;
-			}
-		}
-	}
-	return arr;
-}
-
-vector<vector<int>> bfs(node start, vector<vector<int>> arr)
-{
-	queue<node> q;
-	int dat[12][15] = {};
-	q.push(start);
-	dat[start.y][start.x] = 1;
-
-	while (!q.empty())
-	{
-		node now = q.front(); q.pop();
-		for (int i = 1; i < arr[now.y][now.x]; i++)
-		{
-			for (int j = 0; j < 4; j++)
-			{
-				int cy = now.y + i * dy[j];
-				int cx = now.x + i * dx[j];
-
-				if (cy < 0 || cx < 0 || cy >= H || cx >= W) continue;
-				if (dat[cy][cx] != 0) continue;
-				if (arr[cy][cx] > 0)
-					q.push({ cy,cx });
-				dat[cy][cx] = 1;
-			}
-		}
-		arr[now.y][now.x] = 0;
-	}
-	return arr;
-}
-
-void dfs(int lev, vector<vector<int>> arr)
-{
-	if (lev == N)
-	{
-		int t = countAll(arr);
-		if (Max > t)
-			Max = t;
-		return;
-	}
-
+	if (lev > N) return 0;
+	int cnt = 0;
 	for (int i = 0; i < W; i++)
 	{
-		vector<vector<int>> tmp;
-		tmp = arr;
-		int x = i, y = -1;
-		for (int j = H - 1; j >= 0; j--)
+		// 현재 깊이에 따라 map을 전사
+		mapcpy(lev);
+		bool flag = true;
+		int t = 0;
+		for (int j = 0; j < H; j++)
 		{
-			if (arr[j][i] > 0)
-				y = j;
+			// 가로 중 i번재 줄 꼭대기의 블록을 터뜨리기
+			if (map[lev][j][i])
+			{
+				flag = false;
+				t = dfs(j, i, lev);
+				break;
+			}
 		}
-		if (y >= 0)
-		{
-			tmp = bfs({ y, x }, tmp);
-			tmp = after(tmp);
-			dfs(lev + 1, tmp);
-		}
+		// 터뜨릴 블록이 없었다면 이하 작업은 생략
+		if (flag) continue;
+		ordering(lev);
+		cnt = max(cnt, run(lev + 1) + t);
 	}
+	return cnt;
 }
 
 int main(int argc, char** argv)
 {
-	freopen("C:\\Users\\SSAFY\\Downloads\\sample_input (3).txt", "r", stdin);
+	// freopen("C:\\Users\\User\\Downloads\\sample_input (4).txt", "r", stdin);
 	int test_case;
 	int T;
 	cin >> T;
 	for (int test_case = 1; test_case <= T; test_case++)
 	{
 		cin >> N >> W >> H;
+		int total = 0;
 		for (int i = 0; i < H; i++)
 		{
-			vector<int> tmp;
 			for (int j = 0; j < W; j++)
 			{
-				int t; cin >> t;
-				tmp.push_back(t);
+				cin >> map[0][i][j];
+				if (map[0][i][j] > 0)
+					total++;
 			}
-			arr.push_back(tmp);
 		}
-		Max = 21e8;
-		dfs(0, arr);
-		cout << "#" << test_case << " " << Max << "\n";
+		cout << "#" << test_case << " " << total - run(1) << "\n";
 	}
 
 	return 0;
