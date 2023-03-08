@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div v-if="abc">a</div>
+      <div v-if="abc">b</div>
+      <div v-if="abc">c</div>
+      <div v-if="de">d</div>
+      <div v-if="de">e</div>
+      <div v-if="fg">f</div>
+      <div v-if="fg">g</div>
+      <button v-on:click="changeOutput">go</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            abc: true,
+            de: false,
+            fg: false,
+          };
+        },
+        methods: {
+          changeOutput() {
+            if (this.abc && !this.de) {
+              this.abc = false;
+              this.de = true;
+            } else if (!this.abc && this.de) {
+              this.fg = true;
+              this.de = false;
+            } else {
+              this.abc = true;
+              this.fg = false;
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

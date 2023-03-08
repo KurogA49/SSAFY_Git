@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="message"/>
+      <div>{{ message }}</div>
+      <button v-on:click="changeText">hehehe</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "ddd",
+        },
+        methods: {
+          changeText() {
+            this.message = "여기서도 바뀐다~~~"
+          },
+        }
+      });
+    </script>
+  </body>
+</html>

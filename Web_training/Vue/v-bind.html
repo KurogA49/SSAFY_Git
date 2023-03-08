@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 태그 내용은 {{ }} -->
+      <!-- v-bind:href === :href  
+    :표시 된 내용은 vue에 정의된 내용이 들어간다
+    -->
+      <a v-bind:href="url1">구글</a>
+      <a v-bind:href="url2">네이버</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          url1: "https://google.com",
+          url2: "https://naver.com",
+        },
+      });
+    </script>
+  </body>
+</html>

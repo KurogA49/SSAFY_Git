@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- vue에서 데이터를 나타낼 때 {{ }} -->
+      <h1>{{ message }}</h1>
+      <!-- vue에서 이벤트를 활용하는 경우 inline 방식으로 변경
+      v-on:click -> click event
+      v-on 은 @로 대체 가능
+      v-on:click = "bbq" === @click="bbq"
+     -->
+      <button v-on:click="change_message">hey</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.min.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "클릭을 눌러주세요",
+          nextMessage: "HAHA",
+        },
+        methods: {
+          change_message() {
+            this.message = this.nextMessage;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
