@@ -11,6 +11,8 @@ const morgan = require("morgan");
 app.use(morgan("dev"));
 
 app.use(express.json());
+app.use('/public', express.static('public'));
+
 
 const path = require("path");
 const multer = require("multer");

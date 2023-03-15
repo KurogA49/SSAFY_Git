@@ -4,9 +4,8 @@
     <ul v-if="menus.length">
       <li v-for="menu in menus" :key="menu.id">
         <div class="menu-name" @click="goDetail(menu.id)">
-          메뉴 : {{ menu.name }}
+          <h6>{{ menu.name }}</h6>
         </div>
-        <div>설명 : {{ menu.description }}</div>
         <hr />
       </li>
     </ul>
