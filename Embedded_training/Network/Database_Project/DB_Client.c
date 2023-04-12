@@ -7,24 +7,89 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <string.h>
+#include <pthread.h>
 
-const char *IP = "127.0.0.1";
+#define DATA_SIZE 100
+
+const char *IP = "192.168.110.167";
 const char *PORT = "12345";
 
 int sock;
+int exitFlag;
+pthread_t send_tid;
+pthread_t receive_tid;
+
+pthread_mutex_t mutx;
 
 void interrupt(int arg)
 {
-	printf("\nYou typped Ctrl + C\n");
-	printf("Bye\n");
+	if (arg == 0)
+	{
+		printf("\nINFO :: Server Disconnected\n");
+		printf("Bye\n");
+	}
+	else if (arg == 1)
+	{
+		printf("\nClient Close\n");
+		printf("Bye\n");
+	}
+	else
+	{
+		printf("\nYou typped Ctrl + C\n");
+		printf("Bye\n");
+	}
+
+	pthread_cancel(send_tid);
+	pthread_cancel(receive_tid);
+
+	pthread_join(send_tid, NULL);
+	pthread_join(receive_tid, NULL);
 
 	close(sock);
 	exit(1);
 }
 
+void *sendData()
+{
+	char buf[DATA_SIZE];
+
+	while (!exitFlag)
+	{
+		memset(buf, 0, DATA_SIZE);
+		fgets(buf, DATA_SIZE - 1, stdin);
+		if (!strcmp(buf, "exit\n"))
+		{
+			exitFlag = 1;
+			write(sock, buf, strlen(buf));
+			interrupt(1);
+		}
+		write(sock, buf, strlen(buf));
+	}
+}
+
+void *receiveData()
+{
+	char buf[DATA_SIZE];
+
+	while (!exitFlag)
+	{
+		memset(buf, 0, DATA_SIZE);
+		int len = read(sock, buf, DATA_SIZE - 1);
+		if (len == 0)
+		{
+			exitFlag = 1;
+			printf("INFO :: Server Disconnected\n");
+			interrupt(0);
+		}
+		printf("%s\n", buf);
+	}
+}
+
 int main()
 {
 	signal(SIGINT, interrupt);
+
+	pthread_mutex_init(&mutx, NULL);
 
 	sock = socket(PF_INET, SOCK_STREAM, 0);
 	if (sock == -1)
@@ -44,26 +109,11 @@ int main()
 		exit(1);
 	}
 
-	char buf[100];
-	while (1)
-	{
-		memset(buf, 0, 100);
-		scanf("%s", buf);
-		if (!strcmp(buf, "exit"))
-		{
-			write(sock, buf, strlen(buf));
-			break;
-		}
-		write(sock, buf, strlen(buf));
-		memset(buf, 0, 100);
-		int len = read(sock, buf, 99);
-		if (len == 0)
-		{
-			printf("INFO :: Server Disconnected\n");
-			break;
-		}
-		printf("%s\n", buf);
-	}
+	pthread_create(&send_tid, NULL, sendData, NULL);
+	pthread_create(&receive_tid, NULL, receiveData, NULL);
+
+	pthread_join(send_tid, 0);
+	pthread_join(receive_tid, 0);
 
 	close(sock);
 	return 0;
