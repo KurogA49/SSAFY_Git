@@ -11,9 +11,6 @@
 
 #define DATA_SIZE 100
 
-const char *IP = "192.168.110.167";
-const char *PORT = "12345";
-
 int sock;
 int exitFlag;
 pthread_t send_tid;
@@ -85,8 +82,11 @@ void *receiveData()
 	}
 }
 
-int main()
+int main(int argc, char* args[])
 {
+	char* IP = args[1];
+	char* PORT = args[2];
+	
 	signal(SIGINT, interrupt);
 
 	pthread_mutex_init(&mutx, NULL);
